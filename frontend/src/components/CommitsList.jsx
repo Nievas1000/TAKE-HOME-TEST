@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { Commit } from "./Commit"
+import { ErrorCard } from "./ErrorCard"
 
 export const CommitsList = () =>{
     const [commits, setCommits] = useState([])
+    const [error, setError] = useState('')
 
     useEffect(() =>{
         const getCommits = async() =>{
@@ -11,12 +13,15 @@ export const CommitsList = () =>{
                 const response = await axios.get('http://localhost:3000/commits')
                 setCommits(response.data)
             } catch (error) {
-                console.log(error);
+                setError(error.message)
             }
         }
         getCommits()
     },[])
 
+    if(error !== ''){
+      return <ErrorCard />
+    }
 
     return(
       <div>
