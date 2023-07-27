@@ -6,24 +6,23 @@ const formatDate = (dateString) => {
     return date.toLocaleDateString('en-US', options);
 };
 
-
 export const Commit = ({commit}) =>{
-    return(
-        <div
-            className="w-full bg-white shadow-md rounded-lg overflow-hidden flex p-4 mb-4 relative"
-        >
-            <img
-                className="w-16 h-16 rounded-full mr-4"
-                src={commit.author.avatar_url}
-                alt="Commit"
-            />
-            <div className="flex-grow">
-                <h3 className="text-xl font-semibold mb-2">{commit.author.login}</h3>
-                <p className="text-gray-800">{commit.commit.message}</p>
-            </div>
-            <p className="text-gray-500 text-sm absolute right-0 mt-2 mr-5">{formatDate(commit.commit.author.date)}</p>
-        </div>
-    )
+  return(
+      <div
+          className="w-full bg-white shadow-md rounded-lg overflow-hidden flex p-4 mb-4 relative"
+      >
+          <img
+              className="w-16 h-16 rounded-full mr-4"
+              src={commit.author.avatar_url}
+              alt="Commit"
+          />
+          <div className="flex-grow">
+              <h3 className="text-xl font-semibold mb-2">{commit.author.login}</h3>
+              <p className="text-gray-800">{commit.commit.message}</p>
+          </div>
+          <p className="text-gray-500 text-sm absolute right-0 mt-2 mr-5">{formatDate(commit.commit.author.date)}</p>
+      </div>
+  )
 }
 
 Commit.propTypes = {
